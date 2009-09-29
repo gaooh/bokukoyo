@@ -1,0 +1,18 @@
+
+ぼくこよ端末コード登録のメール送信ありがとうございます。
+
+恐れ入りますが　<%= @auth_info.mail_address %>　は既に登録されています。
+
+【ぼくこよはこちらから】
+http://<%= APP_CONFIG[:domain] %>
+
+【解除はこちらから】
+解除はこちらから
+http://<%= APP_CONFIG[:domain] %>/auth/cancel/<%= @auth_info.invite_code %>
+
+--
+ぼくこよプロジェクト
+◯お問い合わせ
+ support@bokukoyo.drecom.jp
+ ※このメールには返信できません。
+(C)Drecom. Inc

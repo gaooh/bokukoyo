@@ -1,0 +1,28 @@
+
+<%= render :partial=> 'header' %>
+
+<marquee bgcolor="#2f4f4f"><font color="white">大切な予定を忘れないために。　ぼくこよ3/31オープン！</font></marquee>
+<%= render :partial=> 'reg_ident' %>
+<div align="center">
+<font size="2">★<a href="/mobile/entry" UTN>イベント登録</a>★<br><br>
+</div>
+<%= mobile_image_tag 'ph-list.gif', :alt=>"イベントリスト" %><br>
+<% @hCalendars.each_with_index do |hCalendar,index|  %>
+	<font size="2" color="#28903a">●</font><a href="/mobile/detail/<%= hCalendar.fromhtmlname%>" UTN><%= hCalendar.summary %></a><br>
+	<font size="2"><%= ja_format_short(hCalendar.dtstart) %>〜<%= ja_format_short(hCalendar.dtend) %></font><br>
+	<font color="2f4f4f" size="2"><%= hCalendar.location %></font>
+	<div align="right">
+		<form action="/mobile/join" method="post" utn>
+		<%= hidden_field 'hCalendar', 'fromhtml', :value=>hCalendar.fromhtml %>
+		<input type="submit" name="post" value="僕も行く" >
+		</form>
+	</div>
+	<br><br>
+<% end %>
+
+<center>
+<%= link_to "<< 前へ[2]", { :page => @events_pages.current.previous }, {"accesskey"=>"2"} if @events_pages.current.previous %>
+| <%= link_to "次へ[3] >>", { :page => @events_pages.current.next }, {"accesskey"=>"3"} if @events_pages.current.next %>
+</center><br>
+	
+<%= render :partial=> 'menu' %>

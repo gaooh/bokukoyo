@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-2022-JP" http-equiv="Content-Type">
+  <title></title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<meta http-equiv="content-type" content="text/html;charset=ISO-2022-JP">
+<title>ぼくこよ</title>
+<div align="center">
+<img src="http://<%= APP_CONFIG[:domain] %>/images/mail/mail-title.gif" alt="" border="0"
+ height="97" width="262"><br>
+<table border="0" cellpadding="0" cellspacing="0" width="480">
+  <tbody>
+    <tr>
+      <td colspan="3"><img src="http://<%= APP_CONFIG[:domain] %>/images/mail/card-top.gif" alt="" border="0"
+ height="30" width="480"></td>
+    </tr>
+    <tr>
+      <td background="http://<%= APP_CONFIG[:domain] %>/images/mail/card-left.gif" width="30">&nbsp;</td>
+      <td align="left" bgcolor="#f6f6f6" valign="top">
+<a class="moz-txt-link-abbreviated" href="mailto:<%= @recipients %>"><%= @recipients %></a> さんへ<br>	
+<br>
+<%= @hCalendar.uid %> さんからの招待状<br>
+      <br>
+      <div class="vevent">
+イベント<img src="http://<%= APP_CONFIG[:domain] %>/images/mail/card-point.gif">
+      <span class="summary"><a class="url" href="<%= @hCalendar.url %>"><%= @hCalendar.summary %></a></span>
+      <br>
+場所<img src="http://<%= APP_CONFIG[:domain] %>/images/mail/card-point.gif">
+      <span class="location"><%= @hCalendar.location %></span>
+      <br>
+      <span class="date">
+開始日時<img src="http://<%= APP_CONFIG[:domain] %>/images/mail/card-point.gif"><abbr class="dtstart" title="<%= @hCalendar.dtstart.iso8601 %>"><%= ja_format_short(@hCalendar.dtstart) %></abbr><br>
+終了日時<img src="http://<%= APP_CONFIG[:domain] %>/images/mail/card-point.gif"><abbr class="dtend" title="<%= @hCalendar.dtend.iso8601 %>"><%= ja_format_short(@hCalendar.dtend) %></abbr>
+      </span>
+      <br>
+メモ<img src="http://<%= APP_CONFIG[:domain] %>/images/mail/card-point.gif">
+      <span class="description"><%= @hCalendar.description %></span>
+      <br>
+      <br>
+      <div class="tags">カテゴリー<img src="http://<%= APP_CONFIG[:domain] %>/images/mail/card-point.gif"> 
+		<% @hCalendar.categories.each do |category|  %>
+			<a href="http://<%= APP_CONFIG[:domain] %>/category/<%= URI.encode(category) %>"><%= category %></a>&nbsp;
+		<% end %>
+      </div>
+      <br>
+      <br>
+      <br>
+      </div>
+      </td>
+      <td background="http://<%= APP_CONFIG[:domain] %>/images/mail/card-right.gif" width="30">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="3"><img src="http://<%= APP_CONFIG[:domain] %>/images/mail/card-bottom.jpg" alt="" border="0" height="30" width="480"></td>
+    </tr>
+  </tbody>
+
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="480">
+  <tbody>
+    <tr>
+      <td align="center">
+      <font style="text-decoration: none;" color="#999999" size="2">Copyright
+(c)2007 Drecom Co.,Ltd All rights reserved.<br>
+      <a href="http://<%= APP_CONFIG[:domain] %>/terms"
+ style="color: rgb(153, 153, 153); text-decoration: none;">利用規約</a>□
+      <a href="http://<%= APP_CONFIG[:domain] %>/privacy"
+ style="color: rgb(153, 153, 153); text-decoration: none;">プライバシーポリシー</a>□
+      <a href="http://www.drecom.co.jp/"
+ style="color: rgb(153, 153, 153); text-decoration: none;">会社案内</a><br>
+      <br>
+※こちらのメールに返信できません。
+      </font> </td>
+    </tr>
+  </tbody>
+
+</table>
+</div>
+</body>
+</html>

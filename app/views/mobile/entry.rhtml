@@ -1,0 +1,76 @@
+<%= render :partial=> 'header' %>
+
+<%= render :partial=> 'reg_ident' %>
+<% if @messages.size != 0 %><center><font color=red>投稿内容に問題がありました</font></center><% end%>
+
+<%= mobile_image_tag 'ph-entry.gif' %><br><BR>
+
+<%= start_form_tag({:action=>"posting"}) %>
+<div align="left">
+<font size="-1">
+<%= warning_message(@messages["summary"], 'イベントタイトル') %><br>
+<%= text_field 'hCalendar', 'summary', :size=>"12", :istyle=>"1", :value=> @hCalendar.summary %><br>
+<%= warning_message(@messages["summary"]) %>
+<%= warning_message(@messages["dtstart"], '開催日時') %><br>
+<%= warning_message(@messages["dtstart"]) %>
+&nbsp;&nbsp;<%= warning_message(@messages["dtstart_day"], '日付') %><br>
+&nbsp;&nbsp;<font size="-2">（例：20070306）</font><br>
+&nbsp;&nbsp;<%= text_field 'dtstart', 'day', :size=>"8", :istyle=>"4", :value=> show_dt_day(@hCalendar.dtstart) %><br>
+<%= warning_message(@messages["dtstart_day"]) %>
+&nbsp;&nbsp;<%= warning_message(@messages["dtstart_time"], '時間') %><br>
+&nbsp;&nbsp;<font size="-2">（例：1515）</font><br>
+&nbsp;&nbsp;<%= text_field 'dtstart', 'time', :size=>"4", :istyle=>"4", :value=> show_dt_time(@hCalendar.dtstart) %><br>
+<%= warning_message(@messages["dtstart_time"]) %>
+<%= warning_message(@messages["dtend"], '終了日時') %><br>
+<%= warning_message(@messages["dtend"]) %>
+&nbsp;&nbsp;<%= warning_message(@messages["dtend_time"], '日付') %><br>
+&nbsp;&nbsp;<font size="-2">（例：20070306）</font><br>
+&nbsp;&nbsp;<%= text_field 'dtend', 'day', :size=>"8", :istyle=>"4", :value=> show_dt_day(@hCalendar.dtend) %><br>
+<%= warning_message(@messages["dtend_day"]) %>
+&nbsp;&nbsp;<%= warning_message(@messages["dtend_time"], '時間') %><br>
+&nbsp;&nbsp;<font size="-2">（例：1515）</font><br>
+&nbsp;&nbsp;<%= text_field 'dtend', 'time', :size=>"4", :istyle=>"4", :value=> show_dt_time(@hCalendar.dtend) %><br>
+<%= warning_message(@messages["dtend_time"]) %>
+<%= warning_message(@messages["categories"], 'カテゴリ') %><br>
+<%= text_field 'tags', 'tag', :size=>"12", :istyle=>"1", :value=> @hCalendar.str_categories %><br>
+<%= warning_message(@messages["categories"]) %>
+<%= warning_message(@messages["location"], '場所') %><br>
+<%= text_field 'hCalendar', 'location', :size=>"12", :istyle=>"1", :value=> @hCalendar.location %><br>
+<%= warning_message(@messages["location"]) %>
+<%= warning_message(@messages["url"], 'URL') %><br>
+<%= text_field 'hCalendar', 'url', :size=>"12", :istyle=>"3", :value=> @hCalendar.url %><br>
+<%= warning_message(@messages["url"]) %>
+<%= warning_message(@messages["description"], 'メモ') %><br>
+<%= text_area 'hCalendar', 'description', :rows=>'4', :colos=>'10', :istyle=>"1", :value=> @hCalendar.description %>
+<%= warning_message(@messages["description"]) %>
+<br>
+<input type="radio" name="event[public_flag]" id="form-publish-on" value="on" /> 公開する<br>
+<input type="radio" name="event[public_flag]"  id="form-publish-off" value="off" checked />非公開<br>
+<hr>
+<%= warning_message(@messages["nickname"], 'ニックネーム') %><br>
+<%= text_field 'user_info', 'nickname', :size=>"12", :istyle=>"1",:value=> @mobile.nickname %><br>
+<%= warning_message(@messages["nickname"]) %>
+<%= warning_message(@messages["email"], 'Email') %><br>
+<%= text_field 'user_info', 'email', :size=>"12", :istyle=>"3", :value=> @email %><br>
+<%= warning_message(@messages["email"]) %>
+デフォルトメール送信日<br>
+<font size="1">※リマインドメールの受信をイベントの前日or当日に設定することができます。イベント登録時に変更する事も可能です</font><BR>
+<input type="radio" name="user_info[remind_day]" value="previous" <%= remind_day_check(@mobile.remind_day, -1) %>/>前日<br>
+<input type="radio" name="user_info[remind_day]" value="current" <%= remind_day_check(@mobile.remind_day, 0) %> />当日<br>
+デフォルトメール送信時間<br><BR>
+<font size="1">※リマインドメールの受信時間を設定することができます。イベント登録時に変更する事も可能です</font><br>
+<input type="radio" name="user_info[remind_time]" value="9-12" <%= remind_time_check(@mobile.remind_time, '9-12') %> />午前中<br>
+<input type="radio" name="user_info[remind_time]" value="12-15" <%= remind_time_check(@mobile.remind_time, '12-15') %> />12時〜15時<br>
+<input type="radio" name="user_info[remind_time]" value="15-18" <%= remind_time_check(@mobile.remind_time, '15-18') %> />15時〜18時<br>
+<input type="radio" name="user_info[remind_time]" value="18-21" <%= remind_time_check(@mobile.remind_time, '18-21') %> />18時〜21時<br>
+</font>
+<hr>
+<font size="1">※上記ﾌｫｰﾑを送信することにより、あなたは上記利用目的、<%= mobile_privacy_link %>及び<%= mobile_terms_link %>に同意したことになります。ご送信前に利用目的、プライバシーポリシー及び利用規約をよくお読みいただき、ご送信ください。</font><br>
+</div>
+<div align="center">
+<input type="submit" name="post" value="同意して送信する" >
+</div>
+<%= end_form_tag %>
+<br><br>
+
+<%= render :partial=> 'menu' %>

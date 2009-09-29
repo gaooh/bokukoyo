@@ -1,0 +1,13 @@
+<%= mobile_image_tag 'ph-menu.gif' %><br>
+<font size="2">
+┣<a href="/" accesskey="0">HOME[0]</a><br>
+┣<a href="#top" accesskey="1">ページトップ▲[1]</a><br>
+┣<a href="http://support.drecom.co.jp/bokukoyo/" accesskey="4">ブログ(利用方法・お知らせ)[4]</a><br>
+┣<%= link_to "いまひま", { :controller => "mobile", :action => "imahima" }%><br>
+┣<%= link_to "あすひま", { :controller => "mobile", :action => "asuhima" }%><br>
+┣<%= link_to "まつひま", { :controller => "mobile", :action => "matuhima" }%><br>
+┣<%= mobile_privacy_link %><br>
+┗<%= mobile_terms_link %>
+</font>
+<br>
+<br>

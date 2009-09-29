@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>ぼくこよ - 僕のカレンダーに挿した素敵な招待状</title>
+	<meta name="description" content="ぼくこよ：イベントリマインダーサービス" />
+	<meta name="keywords" content="Drecom,microformats,event,マイクロフォーマット,イベント,リマインド,ぼくこよ,カレンダー,k暦" />
+	<%= stylesheet_link_tag 'base' %>
+	<%= stylesheet_link_tag 'app' %> 
+	<%= stylesheet_link_tag 'modalbox' %>
+	<%= stylesheet_link_tag 'baloon_style' %> 
+	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag "builder" %>
+	<%= javascript_include_tag "modalbox" %>
+	<%= javascript_include_tag "script_tmt_validator" %>
+	<%= javascript_include_tag "baloon_validator" %>
+</head>
+
+<body>
+
+<div align="center">
+<img src="/images/mobile/title.gif" alt="ぼくこよ" >
+</div>
+	
+<%= @content_for_layout %>
+
+<!-- footer -->
+<div class="cl"></div>
+<div align="center" class="gcal_footer">
+Copyright(C) 2007 Drecom Co., Ltd. All Rights Reserved.
+</div>
+
+</body>
+</html>

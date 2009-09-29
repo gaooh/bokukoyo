@@ -1,0 +1,17 @@
+<%= render :partial=> 'header' %>
+
+<br><br>
+
+<%= mobile_image_tag 'ph-code.gif' %><br><BR>
+
+端末コード登録をすると､この携帯電話でメール送信先･ニックネームを入力せずにリマインドサービスを利用できるようになります｡<br><br>
+◯<%= mobile_privacy_link %><br>
+◯<%= mobile_terms_link %><br><br>
+利用規約に同意して端末コードを登録するには､<a href="mailto:<%= reg_address %>?subject=BokukoyoMobileRegist"><%= reg_address %></a>宛に件名と本文は空でﾒｰﾙをお送りください｡折り返し登録用のURLをお送りいたします｡<br>
+ドメイン指定を設定されている方は[drecom.jp]を受信できるように設定変更を行ってください｡
+<BR><BR>
+
+<font size="2">[<%= link_to'端末コード解除', :action => 'ident_cancel_confirm' %>]</font><br>
+<BR>
+
+<%= render :partial=> 'menu' %>

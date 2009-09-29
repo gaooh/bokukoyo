@@ -1,0 +1,11 @@
+javascript:var m='http://bokukoyo.drecom.jp/bookmarklet/entry?memo=',t=window.getSelection().toString();window.open(m+t,'_blank','width=600,height=600,scrollbars=yes,resizable=yes');window.focus();undefined;
+
+	<%= defalut_day_list %>
+	<ul id="dayScale">
+	<%= li_scales %>
+	</ul>								
+	
+	<div id="sliderScale" style="background-color: #DCDCDC; width: 0px; height: 7px; border: #232323 1px dashed; margin-top: 10px;"></div>
+	<div id="sliderDiv" style="background-color:#CFFFD7;width:300px;height:10px;">
+		<div id="pointer" style="background-color:#28903A;width:10px;height:10px;"></div>
+	</div><br>

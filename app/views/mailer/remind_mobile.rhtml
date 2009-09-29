@@ -1,0 +1,27 @@
+
+ぼくこよ運営事務局です。
+<%= @hCalendar.uid %>さんよりお預かりした<%= @recipients %>さん宛の招待状を送付します。
+<%= @hCalendar.summary %>に遅れずにいらしてください。
+
+■<%= @hCalendar.summary %>
+開催日:<%= ja_format_day(@hCalendar.dtstart) %>
+開始時間：<%= ja_format_time(@hCalendar.dtstart) %>より
+終了予定：<%= ja_format_short(@hCalendar.dtend) %>
+場所：<%= @hCalendar.location %>
+メモ：<%= @hCalendar.description %>
+<%- @hCalendar.categories.each do |category| -%>
+カテゴリ：<%= category %>　
+URL：<http://<%= APP_CONFIG[:domain] %>/category/<%= URI.encode(category) %>>　
+<%- end -%>
+
+----------
+<%= @hCalendar.summary %>を楽しんでくださいね。
+
+今後も「ぼくこよ」をよろしくお願いします。
+
+--
+ぼくこよプロジェクト
+◯お問い合わせ
+ support@bokukoyo.drecom.jp
+ ※このメールには返信できません。
+(C)Drecom. Inc

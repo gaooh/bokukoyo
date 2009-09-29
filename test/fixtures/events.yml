@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+evnet_1:
+  id: 1
+  auth_email_id: 1
+  html: test_1
+  public_flag: true
+  post_at: 2006-06-21 19:00:00
+  delivery_at: 2006-06-21 19:00:00
+  delivered_flag: true
+event_2:
+  id: 2
+  auth_email_id: 1
+  html: test_2
+  public_flag: true
+  post_at: 2006-06-21 19:00:00
+  delivery_at: 2006-06-21 19:00:00
+  delivered_flag: false
+event_3:
+  id: 3
+  auth_email_id: 1
+  html: test_3
+  public_flag: false
+  post_at: 2006-06-21 19:00:00
+  delivery_at: 2006-06-21 19:00:00
+  delivered_flag: true

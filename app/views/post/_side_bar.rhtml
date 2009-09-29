@@ -1,0 +1,27 @@
+<div id="side-bar">
+		<div class="side">
+			<div class="side-title">
+				<%= image_tag 'side/side_m_intro.gif', :alt=>"ごあいさつ", :size=>"114x44" %>
+			</div>
+			<a href="http://support.drecom.co.jp/bokukoyo/archive/1" ><div class="side-whats">ぼくこよとは？</div></a>
+			<a href="http://support.drecom.co.jp/bokukoyo/archive/3" ><div class="side-whatsmf">マイクロフォーマッツって？</div></a>
+		</div>
+		<div class="side">
+			<div class="side-title">
+				<%= image_tag 'side/side_m_tool.gif', :alt=>"ツール", :size=>"114x44" %>
+			</div>
+			<%= link_to '<div class="side-list">招待状がいっぱい（今日以降の公開イベント一覧）</div>', :controller=> 'post', :action => 'list' %>
+			<a href="http://support.drecom.co.jp/bokukoyo/archive/4" ><div class="side-bookmarklet">ブックマークレット</div></a>
+		</div>
+		<div class="side">
+			<div class="side-title">
+				<%= image_tag 'side/side_m_help.gif', :alt=>"ヘルプ", :size=>"114x44" %>
+			</div>
+			<a href="http://support.drecom.co.jp/bokukoyo/archive/2" ><div class="side-how">使い方いろいろ</div></a>
+		</div>
+
+		<div class="banner">
+			<%= image_tag 'mfps.gif', :alt=>"powered by DRECOM MFPS" %><br />
+		</div>
+	<div class="cl"><br /></div>
+</div>

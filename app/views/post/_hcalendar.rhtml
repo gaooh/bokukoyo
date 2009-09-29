@@ -1,0 +1,56 @@
+<div id="contents_<%= @hCalendar.object_id %>" class="contents times<%= style_by_dtstart(hCalendar.dtstart) %>">
+	<div class="contents-top top-times<%= style_by_dtstart(hCalendar.dtstart) %>">&nbsp;</div>
+		<div class="icon-day"><span class="month"><%= hCalendar.dtstart.month %></span><span class="day"><%= hCalendar.dtstart.day %></span></div>
+	<div class="vevent">
+		<div id="location_<%= hCalendar.object_id %>" class="location"><%= hCalendar.location %></div>
+		<div id="summary_<%= hCalendar.object_id %>" class="summary"><a id="url_<%= hCalendar.object_id %>" class="url" href="<%= hCalendar.url %>"><%= hCalendar.summary %></a></div>
+		<div class="date">
+			<abbr id="dtstart_<%= hCalendar.object_id %>" class="dtstart" title="<%= hCalendar.dtstart.iso8601 %>">
+				<%= ja_format(hCalendar.dtstart) %></abbr>&nbsp;〜&nbsp;
+			<abbr id="dtend_<%= hCalendar.object_id %>" class="dtend" title="<%= hCalendar.dtend.iso8601 %>">
+				<%= ja_format(hCalendar.dtend) %></abbr>
+		</div>
+		<div id="description_<%= hCalendar.object_id %>"  class="description"><%= hCalendar.description %></div>
+		 <div class="tags">カテゴリー: 
+		 	<% hCalendar.categories.each_with_index do |category,c_index|  %>
+		 		<a name="category_<%= hCalendar.object_id %>" href="/category/<%= category %>"><%= category %></a>
+			<% end %>
+		</div>
+		<div class="posted">posted at <span class="dtamp" title="<%= hCalendar.update_date.iso8601 %>"><%= ja_format(hCalendar.update_date)  %></span>&nbsp;&nbsp;by&nbsp;
+			<a class="author"><span class="uid"><%= hCalendar.uid %></span></a>
+		</div>
+	</div>
+<div class="cl"></div>
+</div>
+	<div class="parts">
+		<% if type == 'top' %>
+			<span class="metoo"><a href="javascript:bokumoiku(<%= hCalendar.object_id %>);">僕も行く</a></span>
+		<% elsif type == 'list' %>
+			<span class="metoo"><a href="javascript:list_bokumoiku(<%= hCalendar.object_id %>);">僕も行く</a></span>
+		<% end %>
+		<span class="ical"><%= link_to'この情報をダウンロード', :controller => 'ical', :action => 'generate' , :id=> hCalendar.fromhtmlname %></span>
+		<span class="gcal">
+			<a href="<%= action_url(hCalendar) %>" target="_blank">Googleカレンダー</a>
+		</span>
+</div>
+
+<div class="ads">
+	<script type="text/javascript"><!--
+	google_ad_client = "pub-6086603644768129";
+	google_ad_width = 468;
+	google_ad_height = 60;
+	google_ad_format = "468x60_as";
+	google_ad_type = "text";
+	//2007-04-17: ぼくこよ
+	google_ad_channel = "8092363611";
+	google_color_border = "FFEF82";
+	google_color_bg = "FFFEE2";
+	google_color_link = "0000FF";
+	google_color_text = "000000";
+	google_color_url = "008000";
+	//-->
+	</script>
+	<script type="text/javascript"
+	  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+</div>

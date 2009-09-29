@@ -1,0 +1,11 @@
+<%= render :partial=> 'post/header_navi' %>
+
+<div class="pages-title">
+<h3>認証の処理に問題が発生しました</h3>
+<% for name in [:notice, :warning, :message] %>
+   <% if flash[name] %>
+     <%= "#{flash[name]}" %>
+   <% end %>
+<% end %><br />
+<br />
+

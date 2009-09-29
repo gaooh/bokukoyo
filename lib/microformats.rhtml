@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<title>ぼくこよ - 僕のカレンダーに挿した素敵な招待状</title>
+	</head>
+	
+<div id="container">
+
+<div class="vevent">
+  <a class="url" href="<%= hCalendar.url %>">
+    <abbr class="dtstart" title="<%= hCalendar.dtstart.iso8601 %>"><%= hCalendar.dtstart %></abbr>&mdash;
+    <abbr class="dtend" title="<%= hCalendar.dtend.iso8601 %>"><%= hCalendar.dtend %></abbr>
+    <span class="summary"><%= hCalendar.summary %></span>&mdash; at 
+    <span class="location"><%= hCalendar.location %></span>
+  </a>
+  <div class="description"><%= hCalendar.description %></div>
+  <span class="uid"><%= hCalendar.uid %></span>
+  <ul class="tags">Tags:
+	<% for category in hCalendar.categories %>
+    	<li class="category"><%= category %></li>
+	<% end %>
+  </ul>
+</div>
+
+</div>
+
+<div class="cl"></div>
+<div id="footer">
+Copyright(C) 2007 Drecom Co., Ltd. All Rights Reserved.
+</div>
+
+</body>
+</html>

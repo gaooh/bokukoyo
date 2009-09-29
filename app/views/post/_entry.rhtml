@@ -1,0 +1,183 @@
+<script language="JavaScript">
+	function loading() {
+    	Element.show("loading");
+  	}
+	
+	function complete() {
+		Element.hide("loading");
+	}
+</script>
+<div id="entry-form">
+	
+	<div id="displayError" class="error_message" style="display: none;">
+		投稿内容に問題があるため、正常に投稿できませんでした。
+	</div>
+	<%= form_remote_tag(:url=>{:controller=>"post", :action=>"posting"}, :loading => 'loading()', :complete=>'complete()', :html=>{:name=>"eventform", :id=>"form_entry", :class=>"niceform"}) %>
+		<input type="hidden" name="type" value="<%= type%>" />
+		
+		<div class="form-contents">
+			<p><label id="label_for_summary" for="summary">イベントタイトル&nbsp;<%= image_tag 'required.gif', :alt => 'required' %></label>
+				<%= niceform_text_field "hCalendar", "summary" %>
+				<div id="error_messege_for_summary" class="error_messege_line" style="display: none;"></div>
+			</p>
+			<p>
+				<label>日時</label>
+					<span class="dt-form">
+						<span id="label_for_dtstart" class="form-text">開始</span>
+							<div class="dt-select">
+							<%= select_year Date.today.year, :id => "dtstart_year", :style=>'display: none;', :style_class=>"width_40", :start_year => Date.today.year, :end_year => Date.today.year+2, :prefix=>"dtstart", :field_name =>"year" %>
+							</div>
+							<span class="form-text">年</span>
+							<div class="dt-select">
+							<%= select_month Date.today, :id => "dtstart_month", :style=>'display: none;', :style_class=>"width_30", :use_month_numbers => true, :prefix=>"dtstart", :field_name =>"month" %>
+							</div>
+							<span class="form-text">月</span>
+						<div class="dt-select">
+							<%= select_day Date.today, :id => "dtstart_day", :style_class=>"width_30", :style=>'display: none;', :prefix=>"dtstart", :field_name =>"day" %>
+						</div>
+						<span class="form-text">日</span>
+						<span class="form-text">&nbsp;&nbsp;</span>
+						<br />
+						<span style="float:right; margin:5px;" >
+							<div class="dt-select-time">
+								<%= select_minute Time.now, :id => "dtstart_minute", :style_class=>"width_30", :style=>'display: none;', :minute_step => 10, :prefix=>"dtstart", :field_name =>"minute" %>
+							</div>
+						
+						<span class="form-text-time">
+							：</span>
+						
+						<div class="dt-select-time">
+							<%= select_hour Time.now, :id => "dtstart_hour", :style_class=>"width_30", :style=>'display: none;', :prefix=>"dtstart", :field_name =>"hour" %>
+						</div>
+							
+						</span>
+						<div id="error_messege_for_dtstart" class="error_messege_line" style="display: none;"></div>
+						</span>
+						<br />
+						
+						<span class="dt-form"><span id="label_for_dtend" class="form-text">終了</span>
+						<div class="dt-select">
+						<%= select_year Date.today.year, :id => "dtend_year", :style_class=>"width_40", :style=>'display: none;', :start_year => Date.today.year, :end_year => Date.today.year+2, :prefix=>"dtend", :field_name =>"year" %>
+						</div>
+							<span class="form-text">年</span>
+						<div class="dt-select">
+						<%= select_month Date.today, :id => "dtend_month", :style_class=>"width_30", :style=>'display: none;', :use_month_numbers => true, :prefix=>"dtend", :field_name =>"month" %>
+						</div>
+							<span class="form-text">月</span>
+						<div class="dt-select">
+						<%= select_day Date.today, :id => "dtend_day", :style_class=>"width_30", :style=>'display: none;', :prefix=>"dtend", :field_name =>"day" %>
+						</div>
+							<span class="form-text">日</span>
+						<span class="form-text">
+							&nbsp;&nbsp;</span>
+						<br />
+						
+						<span style="float:right; margin:5px">
+							<div class="dt-select-time">
+							<%= select_minute Time.now, :id => "dtend_minute", :style_class=>"width_30", :style=>'display: none;', :minute_step => 10, :prefix=>"dtend", :field_name =>"minute" %>
+							
+							</div>
+						<span class="form-text-time">
+							：</span>
+						
+							<div class="dt-select-time">
+
+							<%= select_hour Time.now, :id => "dtend_hour", :style_class=>"width_30", :style=>'display: none;', :prefix=>"dtend", :field_name =>"hour" %>
+							</div>
+						</span>
+						<div id="error_messege_for_dtend" class="error_messege_line" style="display: none;"></div>
+						</span>
+						<br />
+					</p>
+
+			<p><label id="label_for_category" for="category">カテゴリー</label>
+				<%= niceform_text_field("tags", "tag", "tooltipText"=>"カテゴリーを複数つけたい場合は『,』で区切ってください") %><br />
+				<div id="error_messege_for_category" class="error_messege_line" style="display: none;"></div>
+			</p>
+			<p><label id="label_for_location" for="location">場所</label>
+				<%= niceform_text_field("hCalendar", "location") %><br />
+				<div id="error_messege_for_location" class="error_messege_line" style="display: none;"></div>
+			</p>
+			<p><label id="label_for_url" for="url">URL</label>
+				<%= niceform_text_field "hCalendar", "url", "tmt:pattern"=>"url" %><br />
+				<div id="error_messege_for_url" class="error_messege_line" style="display: none;"></div>
+			</p>
+			<label id="label_for_description" for="comment">メモ</label>
+			<div id="form-memo">
+				<div style="width: 420px; height: 120px;" class="txtarea"><div class="tr"><img src="/images/niceforms/txtarea_tl.gif" class="txt_corner"></div><div class="cntr"><div style="height: 110px;" class="cntr_l"></div><%= text_area 'hCalendar', 'description', :rows=>'10', :colos=>'30', :id=>"hCalendar_description", :style=>"width: 400px; height: 100px;", :value=>@memo %></div><div class="br"><img src="/images/niceforms/txtarea_bl.gif" class="txt_corner"></div></div><br />
+			</div>
+			<div id="error_messege_for_description" class="error_messege_line" style="display: none;"></div>
+			<br />
+			<p>
+				<label>一般公開設定</label>
+				<div class="publish">
+					<div id="myRadio0" style="margin: 1px; left: -3000px; top: 561px;" class="radioArea"></div><input class="outtaHere" type="radio" name="event[public_flag]" id="form-publish-on" value="on" /> 
+					<label for="form-publish-on">公開する</label>
+				</div>
+				<div class="publish">
+					<div id="myRadio1" style="margin: 1px; left: -3000px; top: 561px;" class="radioAreaChecked"></div><input class="outtaHere" type="radio" name="event[public_flag]"  id="form-publish-off" value="off" checked="checked" />
+					<label class="chosen" for="form-publish-off">非公開</label>
+				</div>
+					<br />
+			</p>
+			
+		</div>
+		<div class="form_auther">
+			<p><span id="label_for_nickname">ニックネーム</span><br />
+				<%= niceform_text_field("user_info", "nickname", :size=>"10", :style=>"width: 120px;", :value=>@user_info.nickname) %><br />
+				<div id="error_messege_for_nickname" class="error_messege_line" style="display: none;"></div></p>
+			<p><span id="label_for_email">Email</span>&nbsp;<%= image_tag 'required.gif', :alt => 'required' %><br />
+				<%= niceform_text_field("user_info", "email", :size=>"10", :style=>"width: 120px;", :value=>@user_info.email) %><br />
+				<div id="error_messege_for_email" class="error_messege_line" style="display: none;"></div></p>
+			<p>メール送信日<br />
+				<%= niceform_radio_botton_remind_day(2, @user_info.remind_day, 'previous', '前日', :style=>"margin: 1px; margin-left: 5px; left: -2234px; top: 257px;")%>
+				<%= niceform_radio_botton_remind_day(3, @user_info.remind_day, 'current', '当日', :style=>"margin: 1px; margin-left: 5px; left: -2234px; top: 276px;")%>
+			<br />
+			</p>
+			<p>メール送信時間<br />
+				<%= niceform_radio_botton_remind_time(4, @user_info.remind_time, '9-12', '午前中', :style=>"margin: 1px; margin-left: 5px; left: -2234px; top: 322px;") %>
+				<%= niceform_radio_botton_remind_time(5, @user_info.remind_time, '12-15', '12時〜15時', :style=>"margin: 1px; margin-left: 5px; left: -2234px; top: 341px;") %>
+				<%= niceform_radio_botton_remind_time(6, @user_info.remind_time, '15-18', '15時〜18時',:style=>"margin: 1px; margin-left: 5px; left: -2234px; top: 360px;") %>
+				<%= niceform_radio_botton_remind_time(7, @user_info.remind_time, '18-21', '18時〜21時',:style=>"margin: 1px; margin-left: 5px; left: -2234px; top: 379px;") %>
+			</p>
+
+			<p><br />
+				<%= niceform_checkbox(0, @user_info.eat_cookie, "クッキーに保存", {:style=>"margin: 1px; margin-left: 5px; left: -2234px; top: 443px;"}, {:params=>"user_info", :param=>"eat_cookie", :id=>"EatCookie"}) %>
+				
+		</div>
+		<div class="form_auther_bottom">&nbsp;</div>
+		<div class="cl"></div>
+			<p>
+			<br />
+			<div class="submit-button">
+			<% if @read_terms == nil  %>
+				<div id="myCheckbox1" style="margin: 1px; left: -2234px; top: 543px;" class="checkboxArea"></div>
+				<%= check_box 'user_info', 'read_terms', :id=>"kiyaku", :class=>"outtaHere", "tmt:minchecked"=>"1", "tmt:maxchecked"=>"1", "tmt:required"=>"true", "tmt:message"=>"利用規約に同意してください。" %><span class="form-text"><label for="kiyaku" style="font-size: 1.2em; font-weight: bold;">利用規約及び個人情報保護方針に同意する</label></span>
+			<br /><br />
+			※上記フォームを送信することにより、あなたは上記利用目的、<a href="/privacy" target="_blank">プライバシーポリシー</a>及び<a href="/terms" target="_blank">利用規約</a>に同意したことになります。ご送信前に利用目的、プライバシーポリシー及び利用規約をよくお読みいただき、ご送信ください。<br /><br />
+			
+			
+			<img class="buttonImg" src="/images/niceforms/button_left.gif"><input style="font-weight: bold; margin:0px auto;" id="submit" type="submit" class="buttonSubmit" name="post" value="同意して送信する" class="btn" /><img class="buttonImg" src="/images/niceforms/button_right.gif"><br />
+			<% else %>
+				<img class="buttonImg" src="/images/niceforms/button_left.gif"><input style="font-weight: bold; margin:0px auto;" id="submit" type="submit" name="post" class="buttonSubmit" value="送信する" class="btn" /><img class="buttonImg" src="/images/niceforms/button_right.gif"><br />
+			<% end %>
+			<div id="readterm_error" style="display: none;" ></div>
+			</div>
+			</p>
+	</form>
+	
+	<div id="loading" style="display: none;">
+        <%= image_tag 'loading.gif', :alt => 'now loading', :size => '32x32' %>
+        イベント情報を登録してます。 Now loading.....
+        <br><br>
+    </div>
+
+	<div id="complete" class="info_message" style="display: none;">
+		登録が完了しました。
+    </div>
+
+</div>
+<div class="cl"></div>
+<script language="JavaScript">
+	Event.observe(window, 'load', loadTime, false);
+</script>	

@@ -1,0 +1,9 @@
+if @has_next
+  page.show 'list_down'
+else
+  page.hide 'list_down'
+end
+
+page.insert_html :before, 'insert_evnet_pos', :partial=>"event_list"
+page.visual_effect :appear, "entry_#{@pagenum}", :duration => 0.8
+

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<Results xmlns="mfps">
+	<NumberOfResults></NumberOfResults>
+	<DisplayPerPage>5</DisplayPerPage>
+	<DisplayFrom>0</DisplayFrom>
+	<APIVersion>1.0</APIVersion>
+		<hCalendar>
+		<fromurl>http://bokukoyo.drecom.jp/for_neko/tzF6N6RVVlk3jhN7EVnBCjjPQ4jjyEwl20070313124133.html</fromurl>
+		<updateDate>2007-03-13 12:41:38.562</updateDate>
+		<url>http://www.drecom.jp/</url>
+		<description>ページおくりとかいいのかしら</description>
+		<location>会社</location>
+		<status></status>
+		<summary>そういえば</summary>
+		<dtstart>2007-03-30 07:00:00.0</dtstart>
+		<dtstamp></dtstamp>
+		<dtend>2007-03-30 07:00:00.0</dtend>
+		<uid>えびせん</uid>
+		<categories>
+							<category>テスト</category>
+				<url></url>
+					</categories>
+	</hCalendar>
+		<hCalendar>
+		<fromurl>http://bokukoyo.drecom.jp/for_neko/NJJDLTb69FduGQYwrPQufFx6xvoya4p420070322181115.html</fromurl>
+		<updateDate>2007-03-22 18:11:32.864</updateDate>
+		<url>http://www.drecom.jp/</url>
+		<description>なったっぽい</description>
+		<location>会社</location>
+		<status></status>
+		<summary>やっとこさ形に</summary>
+		<dtstart>2007-03-30 07:00:00.0</dtstart>
+		<dtstamp></dtstamp>
+		<dtend>2007-03-30 07:00:00.0</dtend>
+		<uid>ebisen</uid>
+		<categories>
+							<category>テスト</category>
+				<url></url>
+					</categories>
+	</hCalendar>
+		<hCalendar>
+		<fromurl>http://bokukoyo.drecom.jp/for_neko/eafvo78veI8EL2fri5aSAVZK8FMMtIXF20070322184054.html</fromurl>
+		<updateDate>2007-03-22 18:41:09.332</updateDate>
+		<url>http://www.drecom.jp/</url>
+		<description>携帯けっこう邪魔くさい</description>
+		<location>会社</location>
+		<status></status>
+		<summary>タイトル</summary>
+		<dtstart>2007-03-30 07:00:00.0</dtstart>
+		<dtstamp></dtstamp>
+		<dtend>2007-03-30 07:00:00.0</dtend>
+		<uid>ebisen</uid>
+		<categories>
+							<category>テスト</category>
+				<url></url>
+					</categories>
+	</hCalendar>
+		<hCalendar>
+		<fromurl>http://bokukoyo.drecom.jp/for_neko/7QSJfqeXg9XS3T7mU9q9bKzajTLBNr1g20070322184117.html</fromurl>
+		<updateDate>2007-03-22 18:41:32.176</updateDate>
+		<url>http://www.drecom.jp/</url>
+		<description>携帯けっこう邪魔くさい　公開</description>
+		<location>会社</location>
+		<status></status>
+		<summary>タイトル</summary>
+		<dtstart>2007-03-30 07:00:00.0</dtstart>
+		<dtstamp></dtstamp>
+		<dtend>2007-03-30 07:00:00.0</dtend>
+		<uid>ebisen</uid>
+		<categories>
+							<category>テスト</category>
+				<url></url>
+					</categories>
+	</hCalendar>
+		<hCalendar>
+		<fromurl>http://bokukoyo.drecom.jp/for_neko/mdfjHwTf1ueXctM72rhIApHsXZ5igj8k20070322202957.html</fromurl>
+		<updateDate>2007-03-22 20:30:12.645</updateDate>
+		<url>http://www.drecom.jp/</url>
+		<description>とおっちゃう気がする</description>
+		<location></location>
+		<status></status>
+		<summary>会社</summary>
+		<dtstart>2007-03-30 07:00:00.0</dtstart>
+		<dtstamp></dtstamp>
+		<dtend>2007-03-30 07:00:00.0</dtend>
+		<uid>ebisen</uid>
+		<categories>
+							<category>サニタイジング</category>
+				<url></url>
+					</categories>
+	</hCalendar>
+	</Results>

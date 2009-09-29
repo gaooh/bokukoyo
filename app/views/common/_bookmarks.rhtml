@@ -1,0 +1,33 @@
+<div class="bookmark-menu">
+
+<a href="javascript:window.location.href='http://b.hatena.ne.jp/add?mode=confirm&title=<%= URI.encode(title) %>&url=<%= URI.encode(url) %>';">
+<img src="http://b.hatena.ne.jp/images/append.gif" alt="このページを追加" title="このページを追加" border="0"></a>
+<a href="http://b.hatena.ne.jp/entry/<%= url %>">
+	<img style="border:none;margin-left:3px;" src="http://b.hatena.ne.jp/entry/image/<%= url %>" title="この記事のはてなブックマーク数" alt="この記事のはてなブックマーク数" />
+</a>
+<a href="http://clip.livedoor.com/page/<%= URI.encode(url) %>">
+	<img src="http://parts.blog.livedoor.jp/img/cmn/clip_16_12_w.gif" border=0>
+	<img style="border:none;margin-left:3px" src="http://image.clip.livedoor.com/counter/<%= url %>" title="この記事のLivedoorクリップ数" alt="この記事のLivedoorクリップ数" />
+</a>
+<a title="del.icio.us" href="http://del.icio.us/post?url=<%= URI.encode(url) %>">
+	<%= image_tag 'delicious_w.png', :alt => 'del.icio.us' %>
+</a>
+<a title="Furl" href="http://www.furl.net/storeIt.jsp?u=<%=  URI.encode(url) %>&t=<%= URI.encode(title) %>">
+	<%= image_tag 'furl_w.png', :alt => 'Furl' %>
+</a>
+<a title="Ma.gnolia" href="http://ma.gnolia.com/beta/bookmarklet/add?url=<%= URI.encode(url)%>&title=<%= URI.encode(title)%>">
+	<%= image_tag 'magnolia_w.png', :alt => 'Ma.gnolia' %>
+</a>
+<a title="NewsVine" href="http://www.newsvine.com/_tools/seed&save?u=<%= URI.encode(url)%>&h=<%= URI.encode(title)%>">
+	<%= image_tag 'newsvine_w.png', :alt => 'NewsVine' %>
+</a>
+<a title="Reddit" href="http://reddit.com/submit?url=<%= URI.encode(url)%>&title=<%= URI.encode(title)%>">
+	<%= image_tag 'reddit_w.png', :alt => 'Reddit' %>
+</a>
+<a title="Spurl" href="http://www.spurl.net/spurl.php?url=<%= URI.encode(url)%>&title=<%= URI.encode(title)%>">
+	<%= image_tag 'spurl_w.png', :alt => 'Spurl' %>
+</a>
+<a title="YahooMyWeb" href="http://myweb2.search.yahoo.com/myresults/bookmarklet?u=<%= URI.encode(url)%>&t=<%= URI.encode(title)%>">
+	<%= image_tag 'yahoomyweb_w.png', :alt => 'YahooMyWeb' %>
+</a>
+</div>

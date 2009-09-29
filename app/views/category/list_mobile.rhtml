@@ -1,0 +1,24 @@
+<%= render :partial=> 'mobile/header' %>
+
+<%= render :partial=> 'mobile/reg_ident' %>
+
+<%= mobile_image_tag 'ph-list.gif', :alt=>"イベントリスト" %><br>
+<% @hCalendars.each_with_index do |hCalendar,index|  %>
+	<font size="2" color="#28903a">●</font><a href="/mobile/detail/<%= hCalendar.fromhtmlname%>" UTN><%= hCalendar.summary %></a><br>
+	<font size="2"><%= ja_format_short(hCalendar.dtstart) %>〜<%= ja_format_short(hCalendar.dtend) %></font><br>
+	<font color="2f4f4f" size="2"><%= hCalendar.location %></font>
+	<div align="right">
+		<form action="/mobile/join" method="post" utn>
+		<%= hidden_field 'hCalendar', 'fromhtml', :value=>hCalendar.fromhtml %>
+		<input type="submit" name="post" value="僕も行く" >
+		</form>
+	</div>
+	<br><br>
+<% end %>
+
+<center>
+<%= link_to "<< 前へ[2]", { :pagenum => @pagenum-1 }, {"accesskey"=>"2"} if @pagenum != 0 %>
+| <%= link_to "次へ[3] >>", { :pagenum => @pagenum+1 }, {"accesskey"=>"3"} if @has_next %>
+</center><br>
+	
+<%= render :partial=> 'mobile/menu' %>

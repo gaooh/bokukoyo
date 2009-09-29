@@ -1,0 +1,13 @@
+<%= render :partial=> 'header' %>
+
+<br><br>
+
+<%= mobile_image_tag 'ph-code.gif' %><br><BR>
+
+ご利用の端末コード登録を解除します。解除したあとも既に登録されたイベント情報は送信されますのでご注意ください。<br><br>
+
+<form action="/mobile/ident_cancel" method="post" utn>
+<input type="submit" name="post" value="解除する" >
+</form>
+
+<%= render :partial=> 'menu' %>

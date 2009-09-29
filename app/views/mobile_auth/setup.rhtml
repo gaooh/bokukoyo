@@ -1,0 +1,34 @@
+<a id="top"></a>
+<div align="center">
+<img src="/images/mobile/title.gif" alt="ぼくこよ" >
+</div>
+<br><br>
+<img src="/images/mobile/ph-code.gif"><br><BR>
+
+<form action="/mobile_auth/regist" method="post" UTN>
+<div align="left">
+<font size="-1">
+ﾆｯｸﾈｰﾑ<br>
+<%= text_field 'user_info', 'nickname', :size=>"12", :istyle=>"1" %><br>
+Email<br>
+<%= text_field 'user_info', 'email', :size=>"12", :istyle=>"3", :value=> @email %><br>
+ﾃﾞﾌｫﾙﾄﾒｰﾙ送信日<br>
+<font size="1">※ﾘﾏｲﾝﾄﾞﾒｰﾙの受信をｲﾍﾞﾝﾄの前日or当日に設定することができます。ｲﾍﾞﾝﾄ登録時に変更する事も可能です</font><BR>
+<input type="radio" name="user_info[remind_day]" value="previous" />前日<br>
+<input type="radio" name="user_info[remind_day]" value="current" checked />当日<br>
+ﾃﾞﾌｫﾙﾄﾒｰﾙ送信時間<br><BR>
+<font size="1">※ﾘﾏｲﾝﾄﾞﾒｰﾙの受信時間を設定することができます。ｲﾍﾞﾝﾄ登録時に変更する事も可能です</font><br>
+<input type="radio" name="user_info[remind_time]" value="9-12" checked />午前中<br>
+<input type="radio" name="user_info[remind_time]" value="12-15" />12時〜15時<br>
+<input type="radio" name="user_info[remind_time]" value="15-18" />15時〜18時<br>
+<input type="radio" name="user_info[remind_time]" value="18-21" />18時〜21時<br>
+</font>
+<hr>
+<font size="1">※上記ﾌｫｰﾑを送信することにより、あなたは上記利用目的、<%= mobile_privacy_link %>及び<%= mobile_terms_link %>に同意したことになります。ご送信前に利用目的、ﾌﾟﾗｲﾊﾞｼｰﾎﾟﾘｼｰ及び利用規約をよくお読みいただき、ご送信ください。</font><br>
+<div align="center">
+<input type="submit" name="post" value="端末ｺｰﾄﾞを登録する" >
+</div>
+</form>
+<br><br>
+
+<%= render :partial=> 'mobile/menu' %>

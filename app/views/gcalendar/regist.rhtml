@@ -1,0 +1,35 @@
+
+
+<%= start_form_tag({:action=>"create"}, :name=>'entry') %>
+
+<div id="entry_form" class="gcal_form">
+	
+	<%= hidden_field 'hCalendar', 'fromurl', :id=> "fromurl", :value=>@fromurl %>
+	
+	<% if @error %>
+		<div id="displayError" class="error_modal_message">
+			<%= @error_message %>
+		</div>
+	<% end %>
+	
+	<div align="center" class="info_modal_message">※ご利用にはGoogleアカウントが必要です。</div>
+	
+	<div class="form-contents">
+		<p><label for="summary">メールアドレス&nbsp;<%= image_tag 'required.gif', :alt => 'required' %></label>
+			<%= niceform_text_field('gform_mail', 'g_info', 'mail') %>
+			<br />
+		</p>
+		<p><label for="summary">パスワード&nbsp;<%= image_tag 'required.gif', :alt => 'required' %></label>
+			<%= niceform_passwd_field('gform_pass', 'g_info', 'passwd') %>
+			<br />
+		</p>
+		<p></p>
+		<div align="center">
+			<img class="buttonImg" src="/images/niceforms/button_left.gif"><input style="font-weight: bold; margin:0px auto;" id="submit" type="button" name="post" class="buttonSubmit" value="登録する" class="btn" onclick="Modalbox.show('', '/gcalendar/create',　{width: 500, height:350, params:{mail: $F('gform_mail'), passwd: $F('gform_pass'), fromurl: $F('fromurl')}});" /><img class="buttonImg" src="/images/niceforms/button_right.gif"><br />
+		</div>
+	
+	</div>
+	
+</div>
+
+<%= end_form_tag %>

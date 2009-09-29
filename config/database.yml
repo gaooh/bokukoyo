@@ -1,0 +1,35 @@
+<% require '/usr/local/site/bokukoyo/shared/system/config' %>
+
+common: &common
+  adapter: mysql
+  username: bokukoyo
+  password: <%= config.password %>
+  host: <%= config.master_1 %>
+  estraier:
+    host: 192.168.50.28
+    user: bokukoyo
+    password: <%= config.password %>
+    port: 1978
+    node: bokukoyo
+  master-1:
+    adapter: mysql
+    host: <%= config.master_1 %>
+    username: bokukoyo
+    password: <%= config.password %>
+  master-2:
+    adapter: mysql
+    host: <%= config.master_2 %>
+    username: bokukoyo
+    password: <%= config.password %>
+
+development:
+  database: bokukoyo_development
+  <<: *common
+
+test:
+  database: bokukoyo_test
+  <<: *common
+
+production:
+  database: bokukoyo_production
+  <<: *common

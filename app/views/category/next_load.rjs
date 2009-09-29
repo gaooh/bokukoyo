@@ -1,0 +1,3 @@
+page.insert_html :before, 'insert_evnet_pos', :partial=>"post/event_list"
+page.visual_effect :appear, "entry_#{@pagenum}", :duration => 0.8
+page.remove 'list_down' unless @has_next

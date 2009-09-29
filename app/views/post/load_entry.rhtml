@@ -1,0 +1,137 @@
+
+<div id="entry-form" style="margin:10px auto">
+	
+		<%= start_form_tag({:action=>"modal_posting"}, :name=>'entry', :id=>"form_entry_modal", :class=>"niceform") %>
+		<%= hidden_field 'hCalendar', 'summary', :id=> "summary", :value=>@hCalendar.summary %>
+		<%= hidden_field 'hCalendar', 'dtstart', :id=> "dtstart", :value=>@hCalendar.dtstart %>
+		<%= hidden_field 'hCalendar', 'dtend', :id=> "dtend", :value=>@hCalendar.dtend %>
+		<%= hidden_field 'tags', 'tag', :id=> "str_categories", :value=>@hCalendar.str_categories %>
+		<%= hidden_field 'hCalendar', 'location', :id=> "location", :value=>@hCalendar.location %>
+		<%= hidden_field 'hCalendar', 'url', :id=> "url", :value=>@hCalendar.url %>
+		<%= hidden_field 'hCalendar', 'description', :id=> "description", :value=>@hCalendar.description %>
+		
+		<div class="form-contents">
+			<div align="center">
+			<img src="/images/mobile/title.gif" alt="ぼくこよ" >
+			</div>
+			
+			<p><label class="entry_column" for="summary">イベントタイトル&nbsp;</label>
+				 <%= @hCalendar.summary%></span><br />
+			</p>
+			<p>
+				<label class="entry_column">日時</label>
+					<span class="dt-form">
+						<span class="form-text">開始</span>
+							<div class="dt-select">
+								: <%= @hCalendar.dtstart%>
+						</div>
+							
+						</span>
+						</span>
+						<br /><br />
+						<span class="dt-form"><span class="form-text">終了</span>
+						<div class="dt-select">
+							: <%= @hCalendar.dtend%>
+							</div>
+						</span>
+						</span>
+						<br />
+					</p>
+
+			<p><label class="entry_column" for="category">カテゴリー</label>
+				 <%= @hCalendar.str_categories%><br />
+			</p>
+			<p><label class="entry_column" for="location">場所</label>
+				 <%= @hCalendar.location%><br />
+			</p>
+			<p><label class="entry_column" for="url">URL</label>
+				 <%= @hCalendar.url%><br />
+			</p>
+			<label class="entry_column" for="comment">メモ</label>
+			<div id="form-memo">
+				<%= truncate(@hCalendar.description, 80)%>
+			</div>
+			<br />
+			<p>
+				<label>一般公開設定</label>
+				<div class="publish">
+					<input type="radio" name="event[public_flag]" id="form-publish-on" value="on" /> 
+					<label for="form-publish-on">公開する</label>
+				</div>
+				<div class="publish">
+					<input type="radio" name="event[public_flag]" id="form-publish-off" value="off" checked="checked" />
+					<label for="form-publish-off">非公開</label>
+				</div>
+					<br />
+			</p>
+			
+				<p>
+				<br />
+				<div class="submit-button">
+				<% if @read_terms == nil  %>
+					<%= check_box 'user_info', 'read_terms', :id=>"kiyaku" %><span class="form-text"><label for="kiyaku">利用規約及び個人情報保護方針に同意する</label></span>
+				<br /><br />
+				※上記フォームを送信することにより、あなたは上記利用目的、<a href="/privacy" target="_blank">プライバシーポリシー</a>及び<a href="/terms" target="_blank">利用規約</a>に同意したことになります。ご送信前に利用目的、プライバシーポリシー及び利用規約をよくお読みいただき、ご送信ください。<br /><br />
+
+
+				<input id="submit" type="submit" class="buttonSubmit" name="post" value="同意して送信する" /><br />
+				<% else %>
+					<input id="submit" type="button" name="post" class="buttonSubmit" value="送信する" class="btn" onclick="entry.submit();return false;"/><br />
+				<% end %>
+				<div id="readterm_error" style="display: none;" ></div>
+				</div>
+				</p>
+				
+		</div>
+		<div class="form_auther">
+			<p>ニックネーム<br />
+				<input type="text" id="userinfo_nickname" name="user_info[nickname]" size="10" value="<%= @user_info.nickname %>"/><br /></p>
+			<p>Email&nbsp;<%= image_tag 'required.gif', :alt => 'required' %><br />
+				<input type="text" id="userinfo_email" name="user_info[email]" size="10" value="<%= @user_info.email %>"/>
+			<br /></p>
+			<p>メール送信日<br />
+				<input type="radio" name="user_info[remind_day]" value="previous" <% if remind_day_checked?(@user_info.remind_day, 'previous') %>checked="checked"<% end %>/>前日<br/>
+				<input type="radio" name="user_info[remind_day]" value="current" <% if remind_day_checked?(@user_info.remind_day, 'current') %>checked="checked"<% end %>/>当日
+			</p>
+			<p>メール送信時間<br />
+				<input type="radio" name="user_info[remind_time]" value="9-12" <% if remind_time_checked?(@user_info.remind_time, '9-12') %>checked="checked"<% end %>/>午前中<br/>
+				<input type="radio" name="user_info[remind_time]" value="12-15" <% if remind_time_checked?(@user_info.remind_time, '12-15') %>checked="checked"<% end %>/>12時〜15時<br/>
+				<input type="radio" name="user_info[remind_time]" value="15-18" <% if remind_time_checked?(@user_info.remind_time, '15-18') %>checked="checked"<% end %>/>15時〜18時<br/>
+				<input type="radio" name="user_info[remind_time]" value="18-21" <% if remind_time_checked?(@user_info.remind_time, '18-21') %>checked="checked"<% end %>/>18時〜21時
+			</p>
+
+			<p>
+				<input type="checkbox" name="user_info[eat_cookie]" <% unless @user_info.eat_cookie.nil? %>checked="checked"<% end %>>クッキーに保存</input>
+				
+		</div>
+		<div class="form_auther_bottom">&nbsp;</div>
+		<div class="cl"></div>
+		
+	</form>
+	
+	<div id="loading" style="display: none;">
+        <%= image_tag 'loading.gif', :alt => 'now loading', :size => '32x32' %>
+        イベント情報を登録してます。 Now loading.....
+        <br><br>
+    </div>
+
+	<div id="complete" class="info_message" style="display: none;">
+		登録が完了しました。
+    </div>
+
+	<div id="displayError" class="error_message" style="display: none;">
+		投稿内容に問題があるため、正常に投稿できませんでした。
+	</div>
+	
+</div>
+<div class="cl"></div>
+
+<script type = "text/javascript">
+<!--
+  init();
+
+  function posting() {
+    alert(entry.submit());	
+  }
+//-->
+</script>

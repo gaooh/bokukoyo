@@ -1,0 +1,92 @@
+.info_message {
+	margin-top: 10px;
+	padding: 10px;
+	border: 1px solid #30488F;
+	background: #AFD8E4;
+	text-align:center;
+}
+
+.error_message {
+	margin-top: 10px;
+	padding: 10px;
+	border: 1px solid #FF0000;
+	background: #FFD5DF;
+	text-align:center;
+}
+
+.error_messege_line {
+	color: #FF0000;
+	margin: 0px 30px 0px 0px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.info_modal_message {
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid #30488F;
+	background: #AFD8E4;
+	text-align:center;
+}
+
+.error_modal_message {
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid #FF0000;
+	background: #FFD5DF;
+	text-align:center;
+}
+
+.main-text {
+	width:650px;
+	line-height:1.6;
+	text-align:left;
+	margin:50px auto
+}
+
+.dt-select-span {
+	float:right; 
+}
+
+.form-text-time{
+	float:right;
+}
+
+.footer-menu {
+	width:800px;
+	height:30px;
+	display:block;
+	text-align:center;
+	font-size:0.75 em;
+	padding-top:5px;
+	margin:0px auto;
+}
+
+.entry_column {
+	color: #28903A;
+}
+
+.bookmark-menu {
+	float:right;
+	padding:5px;
+	padding-right:30px;
+}
+
+.ads{
+	width:556px;
+	position:relative;
+	left:120px;
+	padding-bottom:10px;
+}
+
+.calendar-select {
+	background: #28903A;
+	color: #ffffff;
+	font-size:1.4em;
+	padding:0px 5px 0px 5px;
+}
+
+.calendar-unselect {
+	font-size:1.4em;
+	padding:0px 5px 0px 5px;
+}

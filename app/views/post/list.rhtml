@@ -1,0 +1,82 @@
+
+<%= render :partial=> 'header_navi' %>
+
+<div id="entry_scroll_pos"></div>
+<div id="entry_hidden_form" style="display: none;">
+	<%= render :partial=> 'entry', :locals=>{:type=>"list"} %>
+</div>
+
+<div class="pages-title">
+<h3>招待状がいっぱい</h3>
+今日以降の公開イベントの一覧です。<br />
+<br />
+ツール説明：<br />
+<div class="tools">
+	<%= image_tag 'list-down.gif', :alt=>"もっと見る" %>をクリックするとリストがさらに表示されます。<br />
+	<%= image_tag 'tool1-des.gif', :alt=>"僕も行く" %>『僕も行く』をクリックするとイベント情報を<span style="color:#F00">自分宛にメール</span>を送るためのフォームが表示されます。<br />
+	<%= image_tag 'tool2-des.gif', :alt=>"iCalダウンロード" %>『この情報をダウンロード』をクリックするとイベント情報を<span style="color:#00F">iCal形式でダウンロード</span>します。<br />
+	<%= image_tag 'tool3-des.gif', :alt=>"Googleカレンダー" %>『Googleカレンダー』をクリックするとイベント情報をあなたの<span style="color:#0F0">Googleカレンダーへ送信</span>します。<br />
+</div>
+</div>
+
+<div class="main-list">
+	<%= image_tag 'contents-top.gif' %>
+	<div class="main-left">
+
+<!-- new event -->
+		<div class="event-list">
+			<h3>イベントリスト</h3>
+		</div>
+<!-- new event list -->
+
+		<% @hCalendars.each do |hCalendar|  %>
+			<div id="hcalendar_pos_<%= hCalendar.fromhtmlname %>" style="display: none;"></div>
+			<%= render :partial=> 'hcalendar', :locals=>{:hCalendar=>hCalendar, :type=>"list"} %>
+		<% end %>
+		
+		<div id="insert_evnet_pos" style="display: none;"></div>
+			
+<div class="return-top"><a href="javascript:backToTop();">このページのTOPに戻る</a></div>
+<div class="pages">
+	
+<div id="list_down"><%= image_tag 'list-down-b.gif', :alt=>"もっと見る" %></div>
+
+<div id="list_loading" style="display: none;">
+    <%= image_tag 'loading.gif', :alt => 'now loading', :size => '32x32' %>
+    イベント情報を取得してます。 Now loading.....
+    <br><br>
+</div>
+
+</div>
+
+	</div>
+	<%= render :partial=> 'side_bar' %>
+	
+<div class="cl"><br /></div>
+
+
+<div class="cl"><br /></div>
+<div class="main-bottom">&nbsp;</div>
+
+</div>
+
+<script language="JavaScript">
+	var pagenum = 0
+	
+	function loading() {
+    	Element.show("list_loading");
+		Element.hide("list_down");
+  	}
+	
+	function complete() {
+		Element.hide("list_loading");
+	}
+	
+	function nextLoad() {
+		pagenum++;
+		<%= remote_function( :url => {:action => :next_load}, :with =>"'pagenum=' + pagenum", :loading => 'loading()', :complete=>'complete()') %>
+	}
+	
+	Event.observe('list_down', 'click', nextLoad, false);
+</script>
+

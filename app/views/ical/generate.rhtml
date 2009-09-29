@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+PRODID:-//BOKUKOYO Bokukoyo//Event//EN
+VERSION:2.0
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Japan
+BEGIN:STANDARD
+DTSTART:19390101T000000
+TZOFFSETFROM:+0900
+TZOFFSETTO:+0900
+TZNAME:JST
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:<%= @hCalendar.fromhtml %>@<%= APP_CONFIG[:domain]%>
+DTSTAMP:<%= @hCalendar.dtstamp %>
+SUMMARY:<%= @hCalendar.summary %>
+LOCATION:<%= @hCalendar.location %>
+DESCRIPTION:<%= break_set(@hCalendar.description) %>
+DTSTART;TZID=Japan:<%= ical(@hCalendar.dtstart.time) %>
+DTEND;TZID=Japan:<%= ical(@hCalendar.dtend.time) %>
+CATEGORIES:<%= @hCalendar.str_categories %>
+TRANSP:TRANSPARENT
+PRIORITY:0
+CLASS:PUBLIC
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,16 @@
+<%= render :partial=> 'mobile/header' %>
+
+<br><br>
+<%= mobile_image_tag 'ph-error.gif' %><br>
+<BR>
+	<% for name in [:notice, :warning, :message] %>
+	   <% if flash[name] %>
+	     <%= "#{flash[name]}" %>
+	   <% end %>
+	<% end %>
+	<BR>
+<BR>
+<font size="2">
+→<a href="/">ぼくこよTOPページに戻る</a>
+</font>
+<br><br>

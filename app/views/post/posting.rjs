@@ -1,0 +1,28 @@
+page.hide 'complete'
+page.hide 'displayError'
+
+['summary', 'category', 'dtstart', 'dtend', 'location', 'url', 'description', 'nickname', 'email'].each { |key|
+  page.hide "error_messege_for_#{key}"
+  page["label_for_#{key}"].set_style :color => '#000000'
+}
+
+if @err_messages.empty?
+  page.show 'complete'
+  page.visual_effect :highlight, 'complete', {:duration=>0.8, :startcolor=>'"#30488F"', :endcolor=>'"#AFD8E4"'}
+  if @view_flag
+    page.insert_html :after, 'insert_evnet_pos', :partial=>"hcalendar", :locals=>{:hCalendar=>@hCalendar, :type=>"top"}
+    page.visual_effect :appear, "contents_#{@hCalendar.object_id}", :duration => 0.8
+  end
+else
+  page.visual_effect :scrollTo, 'entry-form', {:duration=>0.3}
+  page.delay(0.5) do
+    page.show 'displayError'
+    page.visual_effect :highlight, 'displayError', {:duration=>0.8, :startcolor=>'"#FF0000"', :endcolor=>'"#FFD5DF"'}
+	end
+	
+	@err_messages.each_pair { |key, value| 
+	  page.show "error_messege_for_#{key}"
+	  page.replace_html "error_messege_for_#{key}", "#{value}"
+	  page["label_for_#{key}"].set_style :color => '#ff0000'
+	} 
+end

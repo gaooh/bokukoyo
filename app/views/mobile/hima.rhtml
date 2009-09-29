@@ -1,0 +1,45 @@
+<%= render :partial=> 'header' %>
+
+<%= render :partial=> 'reg_ident' %>
+
+<%= mobile_image_tag 'ph-event.gif' %><br><BR>
+
+<% if @hCalendar == nil%>
+予定されているイベントはありません。<br><br>
+<% else %>
+<font size="2" color="#28903a">●</font><%= @hCalendar.summary %><br>
+<font size="2"><font color="#28903a">【開始日時】</font><BR>
+<%= ja_format_short(@hCalendar.dtstart) %><BR>
+<font color="#28903a">【終了日時】</font><BR>
+<%= ja_format_short(@hCalendar.dtend) %><BR>
+<font color="#28903a">【場所】</font><BR>
+<%= @hCalendar.location %><BR>
+<font color="#28903a">【カテゴリー】</font><BR>
+<% @hCalendar.categories.each do |category|  %>
+ 	<%= category %>&nbsp;
+<% end %><BR>
+<font color="#28903a">【メモ】</font><BR>
+<%= @hCalendar.description %><BR>
+<font color="#28903a">【URL】</font><BR>
+<a href="<%= @hCalendar.url %>"><%= @hCalendar.url %></a><BR>
+</font>
+<hr color="#28903a">
+<div align="right">
+<font size="2">posted at <%= ja_format_simple(@hCalendar.update_date) %><BR>
+by <%= @hCalendar.uid %></font>
+</div>
+
+<hr color="#28903a">
+<div align="right">
+<form action="/mobile/join" method="post" utn>
+<%= hidden_field 'hCalendar', 'fromhtml', :value=>@hCalendar.fromhtml %>
+<input type="submit" name="post" value="僕も行く" >
+</form><BR>
+</div>
+<br>
+<div align="center">
+<%= link_to "べつなの", { :controller => "mobile", :action => params[:action] }%>
+</div>
+<br><br>
+<% end %>
+<%= render :partial=> 'menu' %>

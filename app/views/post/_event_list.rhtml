@@ -1,0 +1,5 @@
+<div id="entry_<%= @pagenum %>" style="display: none;">
+<% @hCalendars.each do |hCalendar|  %>
+	<%= render :partial=> 'post/hcalendar', :locals=>{:hCalendar=>hCalendar, :type=>"list"} %>
+<% end %>
+</div>
